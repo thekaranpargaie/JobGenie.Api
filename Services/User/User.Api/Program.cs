@@ -22,6 +22,8 @@ ConfigureServices(builder);
 var appSetting = InitializeApp(builder.Configuration);
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 ConfigureApp(app);
 
 app.Run();

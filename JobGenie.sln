@@ -7,10 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{FF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orchestration", "Orchestration", "{0BDA1272-8AA4-4540-8002-B10681B8D205}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aspire.AppHost", "Aspire\Aspire.AppHost\Aspire.AppHost.csproj", "{36B08A01-B01E-4299-894A-7E0C34A41A67}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aspire.ServiceDefaults", "Aspire\Aspire.ServiceDefaults\Aspire.ServiceDefaults.csproj", "{7A447ECB-114C-40C4-8D2B-393655879722}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "Base", "{7057F364-BA36-4845-AED3-0422A10F349E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Base", "Base\Base\Base.csproj", "{263FB85C-FF1B-4766-A186-5AFD0AD027CE}"
@@ -31,25 +27,29 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "User.Infrastructure", "Serv
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resume", "Resume", "{FE55CF9E-FA97-4E7A-8191-027FCD82AA3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resume.Infrastructure", "Services\Resume\Resume.Infrastructure\Resume.Infrastructure.csproj", "{E338C9C4-B566-44BD-BFD5-3E215E11A24A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resume.Infrastructure", "Services\Resume\Resume.Infrastructure\Resume.Infrastructure.csproj", "{E338C9C4-B566-44BD-BFD5-3E215E11A24A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resume.Domain", "Services\Resume\Resume.Domain\Resume.Domain.csproj", "{11C0E10A-479F-4314-A034-37A9FADEC68C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resume.Domain", "Services\Resume\Resume.Domain\Resume.Domain.csproj", "{11C0E10A-479F-4314-A034-37A9FADEC68C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resume.Application", "Services\Resume\Resume.Application\Resume.Application.csproj", "{AC1444DD-FF41-4939-9198-1B47256D717B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resume.Application", "Services\Resume\Resume.Application\Resume.Application.csproj", "{AC1444DD-FF41-4939-9198-1B47256D717B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resume.Api", "Services\Resume\Resume.Api\Resume.Api.csproj", "{E91C78A8-89BF-4415-9104-E1D85737EF40}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MockTest", "MockTest", "{5CD2F672-89E6-4F35-8132-4A299D0DF512}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockTest.Infrastructure", "Services\MockTest\MockTest.Infrastructure\MockTest.Infrastructure.csproj", "{CD1B8BAD-AB1E-4E58-B97A-A46410AE0FC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MockTest.Infrastructure", "Services\MockTest\MockTest.Infrastructure\MockTest.Infrastructure.csproj", "{CD1B8BAD-AB1E-4E58-B97A-A46410AE0FC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockTest.Domain", "Services\MockTest\MockTest.Domain\MockTest.Domain.csproj", "{4A7783B5-865E-4F1C-B8D3-83D029DC3B85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MockTest.Domain", "Services\MockTest\MockTest.Domain\MockTest.Domain.csproj", "{4A7783B5-865E-4F1C-B8D3-83D029DC3B85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockTest.Application", "Services\MockTest\MockTest.Application\MockTest.Application.csproj", "{DC478154-166E-447D-ABBD-19875247E88A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MockTest.Application", "Services\MockTest\MockTest.Application\MockTest.Application.csproj", "{DC478154-166E-447D-ABBD-19875247E88A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MockTest.Api", "Services\MockTest\MockTest.Api\MockTest.Api.csproj", "{2676003D-1C8E-41C7-AE41-C5CC799AF29A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenAI", "Base\GenAI\GenAI.csproj", "{625ABE1F-6A24-483A-924B-BDDC433108A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenAI", "Base\GenAI\GenAI.csproj", "{625ABE1F-6A24-483A-924B-BDDC433108A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspire.AppHost", "Orchestration\Aspire\Aspire.AppHost\Aspire.AppHost.csproj", "{B31EBB59-DFED-43AA-B299-D80F7F5002FD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aspire.ServiceDefaults", "Orchestration\Aspire\Aspire.ServiceDefaults\Aspire.ServiceDefaults.csproj", "{D286395C-62BA-48FD-AB4E-83054EECB119}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,14 +57,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{36B08A01-B01E-4299-894A-7E0C34A41A67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36B08A01-B01E-4299-894A-7E0C34A41A67}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36B08A01-B01E-4299-894A-7E0C34A41A67}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36B08A01-B01E-4299-894A-7E0C34A41A67}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7A447ECB-114C-40C4-8D2B-393655879722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A447ECB-114C-40C4-8D2B-393655879722}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A447ECB-114C-40C4-8D2B-393655879722}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A447ECB-114C-40C4-8D2B-393655879722}.Release|Any CPU.Build.0 = Release|Any CPU
 		{263FB85C-FF1B-4766-A186-5AFD0AD027CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{263FB85C-FF1B-4766-A186-5AFD0AD027CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{263FB85C-FF1B-4766-A186-5AFD0AD027CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -125,13 +117,19 @@ Global
 		{625ABE1F-6A24-483A-924B-BDDC433108A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{625ABE1F-6A24-483A-924B-BDDC433108A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{625ABE1F-6A24-483A-924B-BDDC433108A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B31EBB59-DFED-43AA-B299-D80F7F5002FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B31EBB59-DFED-43AA-B299-D80F7F5002FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B31EBB59-DFED-43AA-B299-D80F7F5002FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B31EBB59-DFED-43AA-B299-D80F7F5002FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D286395C-62BA-48FD-AB4E-83054EECB119}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D286395C-62BA-48FD-AB4E-83054EECB119}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D286395C-62BA-48FD-AB4E-83054EECB119}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D286395C-62BA-48FD-AB4E-83054EECB119}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{36B08A01-B01E-4299-894A-7E0C34A41A67} = {0BDA1272-8AA4-4540-8002-B10681B8D205}
-		{7A447ECB-114C-40C4-8D2B-393655879722} = {0BDA1272-8AA4-4540-8002-B10681B8D205}
 		{263FB85C-FF1B-4766-A186-5AFD0AD027CE} = {7057F364-BA36-4845-AED3-0422A10F349E}
 		{503D54C8-3268-4476-AA03-3136DB3082E9} = {BE8F27BD-6C98-4873-8D6E-A2B19E87CB84}
 		{8D2DD0ED-55F9-46D2-90D7-9F34BEF40C7E} = {FF2DD1EE-F6A0-40D6-9B83-961BF54F04DB}
@@ -150,6 +148,8 @@ Global
 		{DC478154-166E-447D-ABBD-19875247E88A} = {5CD2F672-89E6-4F35-8132-4A299D0DF512}
 		{2676003D-1C8E-41C7-AE41-C5CC799AF29A} = {5CD2F672-89E6-4F35-8132-4A299D0DF512}
 		{625ABE1F-6A24-483A-924B-BDDC433108A6} = {7057F364-BA36-4845-AED3-0422A10F349E}
+		{B31EBB59-DFED-43AA-B299-D80F7F5002FD} = {0BDA1272-8AA4-4540-8002-B10681B8D205}
+		{D286395C-62BA-48FD-AB4E-83054EECB119} = {0BDA1272-8AA4-4540-8002-B10681B8D205}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8E3165F4-BAA9-4017-846A-1AF979D571C1}
