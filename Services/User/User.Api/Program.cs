@@ -83,12 +83,11 @@ void ConfigureServices(WebApplicationBuilder builder)
     builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
     builder.Services.AddVersionSupport(builder.Configuration.GetSection("Version").Get<VersionSettings>());
     builder.Services.RegisterSessionManager();
-    builder.Services.AddSingleton<IUserModule, UserModule>();
-    builder.AddSqlServerDbContext<UserDb>("User");
+    builder.Services.AddScoped<IUserModule, UserModule>();
     builder.Services.AddDataAccessModule();
-    builder.Services.AddMediatorModule(loggingEnabled: true);
     builder.Services.AddServiceModule();
-    builder.Services.AddRepositories();    
+    builder.Services.AddRepositories();
+    builder.Services.AddMediatorModule(loggingEnabled: true);
 }
 
 AppSettings InitializeApp(IConfiguration configuration)
