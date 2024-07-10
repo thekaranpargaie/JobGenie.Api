@@ -65,7 +65,7 @@ void ConfigureServices(WebApplicationBuilder builder)
                .AllowAnyMethod()
                .AllowAnyHeader();
     }));
-    builder.Services.AddFluentValidation(mv => mv.RegisterValidatorsFromAssembly(AppDomain.CurrentDomain.Load("User.Application")));
+    builder.Services.AddFluentValidation(mv => mv.RegisterValidatorsFromAssembly(AppDomain.CurrentDomain.Load("Resume.Application")));
     builder.Services.AddControllers(config => config.Filters.Add(typeof(ApiResultFilterAttribute)));
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddRouting(options => options.LowercaseUrls = true);
