@@ -4,6 +4,7 @@ using Base.Session;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Resume.Domain;
 using System.Linq.Expressions;
 
 namespace Resume.Infrastructure
@@ -11,6 +12,12 @@ namespace Resume.Infrastructure
     public class ResumeDb : DbContext
     {
         internal const string SchemaName = "Resume";
+        public DbSet<Domain.Resume> Resumes { get; set; }
+        public DbSet<Experience> Experiences { get; set; }
+        public DbSet<Education> Educations { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Skill> Skills { get; set; }
+        public DbSet<Interest> Interests { get; set; }
         public void InitDb()
         {
             Database.GetPendingMigrations();
@@ -81,6 +88,31 @@ namespace Resume.Infrastructure
             modelBuilder.HasDefaultSchema(SchemaName);
             // Addd the Postgres Extension for UUID generation
             //modelBuilder.HasPostgresExtension("uuid-ossp");
+
+            modelBuilder.Entity<Experience>()
+           .HasOne(e => e.Resume)
+           .WithMany(r => r.Experiences)
+           .HasForeignKey(e => e.ResumeId);
+
+            modelBuilder.Entity<Education>()
+                .HasOne(e => e.Resume)
+                .WithMany(r => r.Educations)
+                .HasForeignKey(e => e.ResumeId);
+
+            modelBuilder.Entity<Project>()
+                .HasOne(p => p.Resume)
+                .WithMany(r => r.Projects)
+                .HasForeignKey(p => p.ResumeId);
+
+            modelBuilder.Entity<Skill>()
+                .HasOne(s => s.Resume)
+                .WithMany(r => r.Skills)
+                .HasForeignKey(s => s.ResumeId);
+
+            modelBuilder.Entity<Interest>()
+                .HasOne(i => i.Resume)
+                .WithMany(r => r.Interests)
+                .HasForeignKey(i => i.ResumeId);
 
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {

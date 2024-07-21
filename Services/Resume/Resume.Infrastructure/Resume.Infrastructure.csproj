@@ -17,13 +17,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Base\Base\Base.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Shared\Shared.csproj" />
+    <ProjectReference Include="..\Resume.Application\Resume.Application.csproj" />
+    <ProjectReference Include="..\Resume.Domain\Resume.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="Query\" />
-    <Folder Include="Repositories\Implementation\" />
-    <Folder Include="Repositories\Interface\" />
   </ItemGroup>
 
 </Project>
