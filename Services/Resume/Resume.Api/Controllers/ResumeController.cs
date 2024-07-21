@@ -23,7 +23,7 @@ namespace Resume.Api.Controllers
             string requestPrompt = $"Get a resume response generated with available information: {resumeStr}. Try to generate as much info as possible. Don't give null for int values.";
             ResumeDtoResponse resumeDtoResponse = await _genAi.GenerateResponseObject<ResumeDtoResponse>(requestPrompt);
             var generatedPdfByteArray = PdfService.GeneratePdf(resumeDtoResponse.Resume);
-            return File(generatedPdfByteArray, "application/octet-stream", "Resume.pdf");
+            return File(generatedPdfByteArray, "application/pdf", "Resume.pdf");
         }
     }
 }

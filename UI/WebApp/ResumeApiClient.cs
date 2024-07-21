@@ -9,12 +9,19 @@ namespace WebApp
         public ResumeApiClient(HttpClient httpClient)
         {
             _httpClient = httpClient;
+            _httpClient.Timeout = TimeSpan.FromMinutes(5);
         }
 
-        public Task<string> GenerateResumeAsync(ResumeRequestDto resume)
+        public async Task<byte[]> GenerateResumeAsync(ResumeRequestDto resume)
         {
-            return _httpClient.PostAsJsonAsync("api/resume", resume)
-                               .ContinueWith(response => response.Result.Content.ReadAsStringAsync().Result);
+            var response = await _httpClient.PostAsJsonAsync("api/resume", resume);
+            response.EnsureSuccessStatusCode(); // Throws an exception if the HTTP response is unsuccessful
+            return await response.Content.ReadAsByteArrayAsync();
+        }
+        public async Task<List<MockTestDto>> GetMockTest(string skillName)
+        {
+            var response = await _httpClient.GetFromJsonAsync<MockTestDtoResponse>($"api/mockTest?skillName={skillName}");
+            return response.Questions;
         }
     }
 }
