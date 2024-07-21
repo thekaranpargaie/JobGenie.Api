@@ -9,4 +9,8 @@ var userApi = builder.AddProject<Projects.User_Api>("user.api")
 var resumeApi = builder.AddProject<Projects.Resume_Api>("resume.api")
     .WithReference(sqlServer);
 
+builder.AddProject<Projects.WebApp>("webapp")
+    .WithReference(userApi)
+    .WithReference(resumeApi);
+
 builder.Build().Run();

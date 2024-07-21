@@ -14,12 +14,13 @@ namespace GenAI.Providers.Gemini
             _geminiClient = new HttpClient();
         }
 
-        public async Task<T> GenerateResponseObject<T>(string request) where T : DynamicResponse, new()
+        public async Task<T> GenerateResponseObject<T>(string request, bool requestIncludeResponseSchema = false) where T : DynamicResponse, new()
         {
             T t = new T();
             var sampleResponse = t.GetSampleInstance();
             var sampleResponseJson = JsonConvert.SerializeObject(sampleResponse);
 
+            request = request + (!requestIncludeResponseSchema ? $". Response should be in following JSON Format: [{sampleResponseJson}]" : "");
             var requestBody = new
             {
                 contents = new[]
@@ -30,7 +31,7 @@ namespace GenAI.Providers.Gemini
                     {
                         new
                         {
-                            text = $"{request}. Response should be in following JSON Format: [{sampleResponseJson}]"
+                            text = request
                         }
                     }
                 }

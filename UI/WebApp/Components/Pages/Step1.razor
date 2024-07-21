@@ -1,0 +1,16 @@
+﻿<MudTextField Label="Name" @bind-Value="name" />
+
+<MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Next">Next</MudButton>
+
+@code {
+    [Parameter] public EventCallback<string> NameChanged { get; set; }
+    [Parameter] public EventCallback NextStep { get; set; }
+
+    private string name;
+
+    private async Task Next()
+    {
+        await NameChanged.InvokeAsync(name);
+        await NextStep.InvokeAsync();
+    }
+}
