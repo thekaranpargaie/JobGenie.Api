@@ -14,10 +14,10 @@ namespace GenAI.Providers.Gemini
             _geminiClient = new HttpClient();
         }
 
-        public async Task<GenAIResponse<TResponse>> GenerateResponseObject<TResponse>(string request)
+        public async Task<T> GenerateResponseObject<T>(string request) where T : DynamicResponse, new()
         {
-            // Create a sample instance of TResponse to generate the JSON schema
-            var sampleResponse = Activator.CreateInstance<TResponse>();
+            T t = new T();
+            var sampleResponse = t.GetSampleInstance();
             var sampleResponseJson = JsonConvert.SerializeObject(sampleResponse);
 
             var requestBody = new
@@ -42,9 +42,10 @@ namespace GenAI.Providers.Gemini
             var response = await _geminiClient.PostAsync($"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={_geminiApiKey}", content);
             response.EnsureSuccessStatusCode();
 
-            var responseString = await response.Content.ReadAsStringAsync();
-            var responseObj = JsonConvert.DeserializeObject<GenAIResponse<TResponse>>(responseString);
-            return responseObj;
+            GeminiResponse geminiResponse = JsonConvert.DeserializeObject<GeminiResponse>(await response.Content.ReadAsStringAsync());
+            string jsonResponse = geminiResponse.candidates[0].content.parts[0].text.Replace("```", "").Replace("json\n", "").Trim();
+            var responseObj = JsonConvert.DeserializeObject<List<T>>(jsonResponse);
+            return responseObj.FirstOrDefault();
         }
     }
 }

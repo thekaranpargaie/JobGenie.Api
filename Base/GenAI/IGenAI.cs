@@ -8,6 +8,6 @@
         /// <typeparam name="TResponse">The Kind Of Object You Want As Your Response</typeparam>
         /// <param name="request">Request with proper requirement description that you need.</param>
         /// <returns>An Object Response Corresponding To Your Request</returns>
-        public Task<GenAIResponse<TResponse>> GenerateResponseObject<TResponse>(string request);
+        public Task<T> GenerateResponseObject<T>(string request) where T : DynamicResponse, new();
     }
 }

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Base\GenAI\GenAI.csproj" />
     <ProjectReference Include="..\Resume.Domain\Resume.Domain.csproj" />
   </ItemGroup>
 

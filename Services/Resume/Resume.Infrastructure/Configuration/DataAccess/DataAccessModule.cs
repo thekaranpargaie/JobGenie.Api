@@ -10,7 +10,7 @@ namespace Resume.Infrastructure.Configuration.DataAccess
     {
         public static void AddDataAccessModule(this IServiceCollection services)
         {
-            string connectionString = "";//Environment.GetEnvironmentVariable("ConnectionStrings__JobGenie");
+            string connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__JobGenie");
             services.AddDbContext<ResumeDb>(options =>
                 options.UseSqlServer(connectionString,
                     sqlOptions => sqlOptions.MigrationsHistoryTable(CommonConstants.DefaultMigration, CommonConstants.Resume)),

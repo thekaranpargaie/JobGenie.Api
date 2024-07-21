@@ -9,11 +9,4 @@ var userApi = builder.AddProject<Projects.User_Api>("user.api")
 var resumeApi = builder.AddProject<Projects.Resume_Api>("resume.api")
     .WithReference(sqlServer);
 
-var mockTestApi = builder.AddProject<Projects.MockTest_Api>("mocktest.api")
-    .WithReference(sqlServer);
-
-//var apiGateway = builder.AddProject<Projects.ApiGateway>("apigateway")
-//    .WithReference(userApi)
-//    .WithReference(resumeApi);
-
 builder.Build().Run();
