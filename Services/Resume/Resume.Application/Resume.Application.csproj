@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Select.HtmlToPdf.NetCore" Version="24.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Base\GenAI\GenAI.csproj" />
+    <ProjectReference Include="..\Resume.Domain\Resume.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GenAI
+﻿namespace GenAI
 {
     public interface IGenAI
     {
-        public GenAIResponse  
+        /// <summary>
+        /// GenerateJsonResponse methods takes a request and returns a Object Response for that request.
+        /// </summary>
+        /// <typeparam name="TResponse">The Kind Of Object You Want As Your Response</typeparam>
+        /// <param name="request">Request with proper requirement description that you need.</param>
+        /// <returns>An Object Response Corresponding To Your Request</returns>
+        public Task<T> GenerateResponseObject<T>(string request, bool requestIncludeResponseSchema = false) where T : DynamicResponse, new();
     }
 }

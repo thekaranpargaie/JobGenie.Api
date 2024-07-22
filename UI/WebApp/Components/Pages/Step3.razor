@@ -1,0 +1,58 @@
+﻿@using MudBlazor
+
+<MudPaper Class="pa-4" Style="height: 100%;">
+    <div>
+        <h4>Skills</h4>
+        @for (int i = 0; i < skills.Count; i++)
+        {
+            <MudTextField @bind-Value="skills[i]" Label="Skill" Margin="Margin.Dense" />
+        }
+        <MudButton Variant="Variant.Text" Color="Color.Primary" OnClick="AddSkill">Add Skill</MudButton>
+
+        <h4>Interests</h4>
+        @for (int i = 0; i < interests.Count; i++)
+        {
+            <MudTextField @bind-Value="interests[i]" Label="Interest" Margin="Margin.Dense" />
+        }
+        <MudButton Variant="Variant.Text" Color="Color.Primary" OnClick="AddInterest">Add Interest</MudButton>
+    </div>
+
+    <MudButton Variant="Variant.Text" Color="Color.Secondary" OnClick="Previous">Previous</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SubmitForm">Submit</MudButton>
+</MudPaper>
+
+@code {
+    [Parameter] public EventCallback<List<string>> SkillsChanged { get; set; }
+    [Parameter] public EventCallback<List<string>> InterestsChanged { get; set; }
+    [Parameter] public EventCallback Submit { get; set; }
+    [Parameter] public EventCallback PreviousStep { get; set; }
+
+    private List<string> skills = new() { string.Empty }; // Start with one empty skill input
+    private List<string> interests = new() { string.Empty }; // Start with one empty interest input
+
+    private async Task SubmitForm()
+    {
+        // Clean up empty entries
+        skills = skills.Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
+        interests = interests.Where(i => !string.IsNullOrWhiteSpace(i)).ToList();
+        
+        await SkillsChanged.InvokeAsync(skills);
+        await InterestsChanged.InvokeAsync(interests);
+        await Submit.InvokeAsync();
+    }
+
+    private async Task Previous()
+    {
+        await PreviousStep.InvokeAsync();
+    }
+
+    private void AddSkill()
+    {
+        skills.Add(string.Empty); // Add a new empty skill input
+    }
+
+    private void AddInterest()
+    {
+        interests.Add(string.Empty); // Add a new empty interest input
+    }
+}

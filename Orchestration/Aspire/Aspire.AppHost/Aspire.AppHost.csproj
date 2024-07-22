@@ -14,9 +14,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\ApiGateway\ApiGateway.csproj" />
-    <ProjectReference Include="..\..\..\Services\MockTest\MockTest.Api\MockTest.Api.csproj" />
     <ProjectReference Include="..\..\..\Services\Resume\Resume.Api\Resume.Api.csproj" />
     <ProjectReference Include="..\..\..\Services\User\User.Api\User.Api.csproj" />
+    <ProjectReference Include="..\..\..\UI\WebApp\WebApp.csproj" />
   </ItemGroup>
 
 </Project>

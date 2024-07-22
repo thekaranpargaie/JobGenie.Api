@@ -1,6 +1,8 @@
 using Base.Filters;
 using Base.Options;
 using FluentValidation.AspNetCore;
+using GenAI;
+using GenAI.Providers.Gemini;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
@@ -88,6 +90,9 @@ void ConfigureServices(WebApplicationBuilder builder)
     builder.Services.AddServiceModule();
     builder.Services.AddRepositories();
     builder.Services.AddMediatorModule(loggingEnabled: true);
+    builder.Services.AddScoped<IGenAI, Gemini>();
+    builder.Services.AddOptions();
+    builder.Services.Configure<GeminiConfig>(builder.Configuration.GetSection("GeminiConfig"));
 }
 
 AppSettings InitializeApp(IConfiguration configuration)
