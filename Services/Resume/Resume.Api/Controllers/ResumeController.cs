@@ -16,13 +16,20 @@ namespace Resume.Api.Controllers
         {
             _genAi = genAi;
         }
-        [HttpPost]
-        public async Task<IActionResult> Create(ResumeRequestDto resumeDto)
+
+        [HttpPost("generate")]
+        public async Task<ResumeDto> Create(ResumeRequestDto resumeDto)
         {
             string resumeStr = JsonConvert.SerializeObject(resumeDto);
             string requestPrompt = $"Get a resume response generated with available information: {resumeStr}. Try to generate as much info as possible. Don't give null for int values.";
             ResumeDtoResponse resumeDtoResponse = await _genAi.GenerateResponseObject<ResumeDtoResponse>(requestPrompt);
-            var generatedPdfByteArray = PdfService.GeneratePdf(resumeDtoResponse.Resume);
+            return resumeDtoResponse.Resume;
+        }
+
+        [HttpPost("download")]
+        public async Task<IActionResult> Download(ResumeDto resumeDto)
+        {
+            var generatedPdfByteArray = PdfService.GeneratePdf(resumeDto);
             return File(generatedPdfByteArray, "application/pdf", "Resume.pdf");
         }
     }

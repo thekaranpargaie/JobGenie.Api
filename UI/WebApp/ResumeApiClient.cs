@@ -1,4 +1,7 @@
-﻿using Resume.Application.DTOs;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Resume.Application.DTOs;
 
 namespace WebApp
 {
@@ -11,12 +14,16 @@ namespace WebApp
             _httpClient = httpClient;
             _httpClient.Timeout = TimeSpan.FromMinutes(5);
         }
-
-        public async Task<byte[]> GenerateResumeAsync(ResumeRequestDto resume)
+        public async Task<ResumeDto> GenerateResumeAsync(ResumeRequestDto resume)
         {
-            var response = await _httpClient.PostAsJsonAsync("api/resume", resume);
-            response.EnsureSuccessStatusCode(); // Throws an exception if the HTTP response is unsuccessful
-            return await response.Content.ReadAsByteArrayAsync();
+            var response = await _httpClient.PostAsJsonAsync("api/resume/generate", resume);
+            string jsonResume = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<ResumeDto>(jsonResume);
+        }
+        public async Task<HttpResponseMessage> DownloadResumeAsync(ResumeDto resume)
+        {
+            var response = await _httpClient.PostAsJsonAsync("api/resume/download", resume);
+            return response;
         }
         public async Task<List<MockTestDto>> GetMockTest(string skillName)
         {

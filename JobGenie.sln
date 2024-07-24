@@ -43,7 +43,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resume.Tests", "Resume.Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "User.Test", "User.Test\User.Test.csproj", "{DFF6D51C-6DB7-4453-AE4F-EE3E5DEF86D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobGenie.AppHost", "JobGenie.AppHost\JobGenie.AppHost.csproj", "{7C197A1B-255A-458E-A0E2-C201D1FB462C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobGenie.AppHost", "JobGenie.AppHost\JobGenie.AppHost.csproj", "{7C197A1B-255A-458E-A0E2-C201D1FB462C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobGenie.ServiceDefaults", "JobGenie.ServiceDefaults\JobGenie.ServiceDefaults.csproj", "{1E743C14-B392-4D71-A522-ADB928ED4A84}"
 EndProject

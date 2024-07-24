@@ -1,0 +1,27 @@
+﻿@using MudBlazor
+
+<div class="loading-overlay" style="@(IsVisible ? "display: flex;" : "display: none;")">
+    <MudPaper Class="d-flex align-items-center justify-content-center" Style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5);">
+        <div class="text-center">
+            <MudIcon Icon="@Icons.Material.Filled.HourglassEmpty" Style="font-size: 48px; color: white;" />
+            <MudText Color="Color.Secondary">AI is working on your resume...</MudText>
+        </div>
+    </MudPaper>
+</div>
+
+@code {
+    [Parameter] public bool IsVisible { get; set; }
+}
+<style>
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+</style>

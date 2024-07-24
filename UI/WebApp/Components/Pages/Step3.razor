@@ -3,56 +3,62 @@
 <MudPaper Class="pa-4" Style="height: 100%;">
     <div>
         <h4>Skills</h4>
-        @for (int i = 0; i < skills.Count; i++)
+        @foreach (var skill in skills.Select((value, index) => new { value, index }))
         {
-            <MudTextField @bind-Value="skills[i]" Label="Skill" Margin="Margin.Dense" />
+            <MudTextField @bind-Value="skills[skill.index]" Label="Skill" Margin="Margin.Dense" />
         }
         <MudButton Variant="Variant.Text" Color="Color.Primary" OnClick="AddSkill">Add Skill</MudButton>
 
         <h4>Interests</h4>
-        @for (int i = 0; i < interests.Count; i++)
+        @foreach (var interest in interests.Select((value, index) => new { value, index }))
         {
-            <MudTextField @bind-Value="interests[i]" Label="Interest" Margin="Margin.Dense" />
+            <MudTextField @bind-Value="interests[interest.index]" Label="Interest" Margin="Margin.Dense" />
         }
         <MudButton Variant="Variant.Text" Color="Color.Primary" OnClick="AddInterest">Add Interest</MudButton>
     </div>
 
     <MudButton Variant="Variant.Text" Color="Color.Secondary" OnClick="Previous">Previous</MudButton>
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SubmitForm">Submit</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Next">Next</MudButton>
 </MudPaper>
 
 @code {
     [Parameter] public EventCallback<List<string>> SkillsChanged { get; set; }
     [Parameter] public EventCallback<List<string>> InterestsChanged { get; set; }
-    [Parameter] public EventCallback Submit { get; set; }
+    [Parameter] public EventCallback NextStep { get; set; }
     [Parameter] public EventCallback PreviousStep { get; set; }
 
     private List<string> skills = new() { string.Empty }; // Start with one empty skill input
     private List<string> interests = new() { string.Empty }; // Start with one empty interest input
 
-    private async Task SubmitForm()
+    private void AddSkill()
+    {
+        if (!string.IsNullOrWhiteSpace(skills.LastOrDefault()))
+        {
+            skills.Add(string.Empty); // Add a new empty skill input only if the last one is not empty
+        }
+    }
+
+    private void AddInterest()
+    {
+        if (!string.IsNullOrWhiteSpace(interests.LastOrDefault()))
+        {
+            interests.Add(string.Empty); // Add a new empty interest input only if the last one is not empty
+        }
+    }
+
+    private async Task Next()
     {
         // Clean up empty entries
         skills = skills.Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
         interests = interests.Where(i => !string.IsNullOrWhiteSpace(i)).ToList();
-        
+
         await SkillsChanged.InvokeAsync(skills);
         await InterestsChanged.InvokeAsync(interests);
-        await Submit.InvokeAsync();
+        await NextStep.InvokeAsync();
     }
 
     private async Task Previous()
     {
         await PreviousStep.InvokeAsync();
-    }
-
-    private void AddSkill()
-    {
-        skills.Add(string.Empty); // Add a new empty skill input
-    }
-
-    private void AddInterest()
-    {
-        interests.Add(string.Empty); // Add a new empty interest input
     }
 }

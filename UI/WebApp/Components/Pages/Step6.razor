@@ -1,0 +1,46 @@
+﻿@using Resume.Application.DTOs
+<MudPaper Class="pa-4" Style="height: 100%;">
+    <div>
+        <h4>Experience</h4>
+        @foreach (var experience in experiences.Select((value, index) => new { value, index }))
+        {
+            <MudTextField @bind-Value="experiences[experience.index].CompanyName" Label="Company Name" Margin="Margin.Dense" />
+            <MudTextField @bind-Value="experiences[experience.index].Address" Label="Address" Margin="Margin.Dense" />
+            <MudTextField @bind-Value="experiences[experience.index].Duration" Label="Duration" Margin="Margin.Dense" />
+            <MudTextField @bind-Value="experiences[experience.index].Position" Label="Position" Margin="Margin.Dense" />
+        }
+        <MudButton Variant="Variant.Text" Color="Color.Primary" OnClick="AddExperience">Add Experience</MudButton>
+    </div>
+
+    <MudButton Variant="Variant.Text" Color="Color.Secondary" OnClick="Previous">Previous</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SubmitForm">Submit</MudButton>
+</MudPaper>
+
+@code {
+    [Parameter] public EventCallback<List<ExperienceRequestDto>> ExperiencesChanged { get; set; }
+    [Parameter] public EventCallback Submit { get; set; }
+    [Parameter] public EventCallback PreviousStep { get; set; }
+
+    private List<ExperienceRequestDto> experiences = new() { new ExperienceRequestDto() }; // Start with one empty experience
+
+    private void AddExperience()
+    {
+        if (!string.IsNullOrWhiteSpace(experiences.LastOrDefault()?.CompanyName))
+        {
+            experiences.Add(new ExperienceRequestDto()); // Add a new empty experience input only if the last one has a company name
+        }
+    }
+
+    private async Task SubmitForm()
+    {
+        // Clean up empty entries
+        experiences = experiences.Where(e => !string.IsNullOrWhiteSpace(e.CompanyName)).ToList();
+        await ExperiencesChanged.InvokeAsync(experiences);
+        await Submit.InvokeAsync();
+    }
+
+    private async Task Previous()
+    {
+        await PreviousStep.InvokeAsync();
+    }
+}

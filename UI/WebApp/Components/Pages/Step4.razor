@@ -1,0 +1,44 @@
+﻿@using Resume.Application.DTOs
+<MudPaper Class="pa-4" Style="height: 100%;">
+    <div>
+        <h4>Projects</h4>
+        @foreach (var project in projects.Select((value, index) => new { value, index }))
+        {
+            <MudTextField @bind-Value="projects[project.index].ProjectName" Label="Project Name" Margin="Margin.Dense" />
+            <MudTextField @bind-Value="projects[project.index].Description" Label="Description" Margin="Margin.Dense" />
+        }
+        <MudButton Variant="Variant.Text" Color="Color.Primary" OnClick="AddProject">Add Project</MudButton>
+    </div>
+
+    <MudButton Variant="Variant.Text" Color="Color.Secondary" OnClick="Previous">Previous</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Next">Next</MudButton>
+</MudPaper>
+
+@code {
+    [Parameter] public EventCallback<List<ProjectRequestDto>> ProjectsChanged { get; set; }
+    [Parameter] public EventCallback NextStep { get; set; }
+    [Parameter] public EventCallback PreviousStep { get; set; }
+
+    private List<ProjectRequestDto> projects = new() { new ProjectRequestDto() }; // Start with one empty project
+
+    private void AddProject()
+    {
+        if (!string.IsNullOrWhiteSpace(projects.LastOrDefault()?.ProjectName))
+        {
+            projects.Add(new ProjectRequestDto()); // Add a new empty project input only if the last one has a name
+        }
+    }
+
+    private async Task Next()
+    {
+        // Clean up empty entries
+        projects = projects.Where(p => !string.IsNullOrWhiteSpace(p.ProjectName)).ToList();
+        await ProjectsChanged.InvokeAsync(projects);
+        await NextStep.InvokeAsync();
+    }
+
+    private async Task Previous()
+    {
+        await PreviousStep.InvokeAsync();
+    }
+}
