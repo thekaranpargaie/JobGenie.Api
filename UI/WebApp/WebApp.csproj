@@ -13,7 +13,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Orchestration\Aspire\Aspire.ServiceDefaults\Aspire.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\..\JobGenie.ServiceDefaults\JobGenie.ServiceDefaults.csproj" />
     <ProjectReference Include="..\..\Services\Resume\Resume.Application\Resume.Application.csproj" />
   </ItemGroup>
 </Project>

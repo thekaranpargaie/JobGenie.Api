@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Base\Base\Base.csproj" />
-    <ProjectReference Include="..\..\..\Orchestration\Aspire\Aspire.ServiceDefaults\Aspire.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\..\..\JobGenie.ServiceDefaults\JobGenie.ServiceDefaults.csproj" />
     <ProjectReference Include="..\..\..\Shared\Shared\Shared.csproj" />
     <ProjectReference Include="..\User.Application\User.Application.csproj" />
     <ProjectReference Include="..\User.Infrastructure\User.Infrastructure.csproj" />

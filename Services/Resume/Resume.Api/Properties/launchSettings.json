@@ -16,7 +16,8 @@
       "launchUrl": "swagger",
       "applicationUrl": "http://localhost:5284",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionStrings__JobGenie": "Host=pg-jobgenie-korkaran14-2b27.d.aivencloud.com;Port=23102;Database=defaultdb;Username=avnadmin;Password=AVNS_Kg3Fx9RQ5gzhMKfguq1;SslMode=Require;"
       }
     },
     "https": {
@@ -26,7 +27,8 @@
       "launchUrl": "swagger",
       "applicationUrl": "https://localhost:7178;http://localhost:5284",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionStrings__JobGenie": "Host=pg-jobgenie-korkaran14-2b27.d.aivencloud.com;Port=23102;Database=defaultdb;Username=avnadmin;Password=AVNS_Kg3Fx9RQ5gzhMKfguq1;SslMode=Require;"
       }
     },
     "IIS Express": {

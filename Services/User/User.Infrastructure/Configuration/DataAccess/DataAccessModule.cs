@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using User.Infrastructure.Configuration.DataAccess.Repository;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 namespace User.Infrastructure.Configuration.DataAccess
 {
@@ -11,7 +12,7 @@ namespace User.Infrastructure.Configuration.DataAccess
         {
             string connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__JobGenie");
             services.AddDbContext<UserDb>(options =>
-                options.UseSqlServer(connectionString),ServiceLifetime.Scoped);
+                options.UseNpgsql(connectionString),ServiceLifetime.Scoped);
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IEntityRepository<>), typeof(EntityRepository<>));
 

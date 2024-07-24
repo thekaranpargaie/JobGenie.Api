@@ -12,9 +12,7 @@ namespace Resume.Infrastructure.Configuration.DataAccess
         {
             string connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__JobGenie");
             services.AddDbContext<ResumeDb>(options =>
-                options.UseSqlServer(connectionString,
-                    sqlOptions => sqlOptions.MigrationsHistoryTable(CommonConstants.DefaultMigration, CommonConstants.Resume)),
-                ServiceLifetime.Scoped);
+                options.UseNpgsql(connectionString), ServiceLifetime.Scoped);
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IEntityRepository<>), typeof(EntityRepository<>));
 

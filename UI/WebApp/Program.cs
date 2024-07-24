@@ -18,10 +18,10 @@ namespace WebApp
                 .AddInteractiveServerComponents();
 
             builder.Services.AddHttpClient<ResumeApiClient>(client =>
-            client.BaseAddress = new("http://resume.api"));
+            client.BaseAddress = new("http://resumeapi"));
 
             builder.Services.AddHttpClient<UserApiClient>(client =>
-            client.BaseAddress = new("http://user.api"));
+            client.BaseAddress = new("http://userapi"));
 
             var app = builder.Build();
 

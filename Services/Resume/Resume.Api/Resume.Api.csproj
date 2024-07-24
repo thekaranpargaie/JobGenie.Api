@@ -20,7 +20,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\Base\Base\Base.csproj" />
 		<ProjectReference Include="..\..\..\Base\GenAI\GenAI.csproj" />
-		<ProjectReference Include="..\..\..\Orchestration\Aspire\Aspire.ServiceDefaults\Aspire.ServiceDefaults.csproj" />
+		<ProjectReference Include="..\..\..\JobGenie.ServiceDefaults\JobGenie.ServiceDefaults.csproj" />
 		<ProjectReference Include="..\..\..\Shared\Shared\Shared.csproj" />
 		<ProjectReference Include="..\Resume.Application\Resume.Application.csproj" />
 		<ProjectReference Include="..\Resume.Infrastructure\Resume.Infrastructure.csproj" />
