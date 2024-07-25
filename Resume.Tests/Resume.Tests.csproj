@@ -11,9 +11,12 @@
 
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="FluentAssertions" Version="6.12.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
     <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
+    <PackageReference Include="xunit" Version="2.9.0" />
+    <PackageReference Include="xunit.categories" Version="2.0.8" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,8 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Resume.Application\Service\" />
     <Folder Include="Resume.Domain\" />
-    <Folder Include="Resume.Application\" />
     <Folder Include="Resume.Infrastructure\AutoMapperProfileTests\" />
     <Folder Include="Resume.Infrastructure\ConfigurationTests\EventsBusTests\" />
     <Folder Include="Resume.Infrastructure\MigrationTests\" />
