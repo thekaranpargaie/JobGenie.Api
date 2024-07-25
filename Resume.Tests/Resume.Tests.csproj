@@ -17,6 +17,10 @@
     <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
     <PackageReference Include="xunit" Version="2.9.0" />
     <PackageReference Include="xunit.categories" Version="2.0.8" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -24,13 +28,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resume.Application\Service\" />
-    <Folder Include="Resume.Domain\" />
     <Folder Include="Resume.Infrastructure\AutoMapperProfileTests\" />
     <Folder Include="Resume.Infrastructure\ConfigurationTests\EventsBusTests\" />
     <Folder Include="Resume.Infrastructure\MigrationTests\" />
     <Folder Include="Resume.Infrastructure\RepositoryTests\" />
     <Folder Include="Resume.Infrastructure\QueryTests\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Base\GenAI\GenAI.csproj" />
+    <ProjectReference Include="..\Services\Resume\Resume.Application\Resume.Application.csproj" />
+    <ProjectReference Include="..\Services\Resume\Resume.Domain\Resume.Domain.csproj" />
   </ItemGroup>
 
 </Project>
