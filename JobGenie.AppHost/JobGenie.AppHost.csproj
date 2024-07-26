@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -12,11 +12,18 @@
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.AppHost" Version="8.1.0" />
     <PackageReference Include="Aspire.Hosting.SqlServer" Version="8.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Services\Resume\Resume.Api\Resume.Api.csproj" />
+    <ProjectReference Include="..\Services\Resume\Resume.Infrastructure\Resume.Infrastructure.csproj" />
     <ProjectReference Include="..\Services\User\User.Api\User.Api.csproj" />
+    <ProjectReference Include="..\Services\User\User.Infrastructure\User.Infrastructure.csproj" />
     <ProjectReference Include="..\UI\WebApp\WebApp.csproj" />
   </ItemGroup>
 
