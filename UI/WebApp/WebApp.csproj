@@ -16,7 +16,6 @@
     <None Include="wwwroot\assets\img\Facebook.svg" />
     <None Include="wwwroot\assets\img\hero-bg.svg" />
     <None Include="wwwroot\assets\img\homeImage.svg" />
-    <None Include="wwwroot\assets\img\icon.svg" />
     <None Include="wwwroot\assets\img\instagram.svg" />
     <None Include="wwwroot\assets\img\linkedin.svg" />
     <None Include="wwwroot\assets\img\logo-footer.svg" />
