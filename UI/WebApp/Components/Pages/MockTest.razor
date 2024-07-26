@@ -22,10 +22,15 @@
     {
         @if (isTestCompleted)
         {
-            <MudText Typo="Typo.h5" Class="mb-2">Test Completed!</MudText>
+            @*<MudText Typo="Typo.h5" Class="mb-2">Test Completed!</MudText>
             <MudText Typo="Typo.body1" Class="mb-4">Your Score: @score / @questions.Count</MudText>
             <MudProgressLinear Class="mb-4" Color="Color.Primary" Value="@(score * 100 / questions.Count)" />
-            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="ResetTest">Retake Test</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="ResetTest">Retake Test</MudButton>*@
+            <MudChart ChartType="ChartType.Donut" Width="300px" Height="300px" InputData="@rightandwrong" InputLabels="@labels">
+                <CustomGraphics>
+                    <text class="donut-inner-text" x="47%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="black" font-family="Helvetica" font-size="5">@rightandwrong[0] <span>%2F</span> @rightandwrong.Sum().ToString()</text>
+                </CustomGraphics>
+            </MudChart>
         }
         else
         {
@@ -64,6 +69,8 @@
     private string skillName = string.Empty;
     private bool isLoading = false;
     private bool isEnterPressed = false;
+    public double[] rightandwrong = new double[]{ 0,0 };
+    public string[] labels = { "Right", "Wrong" };
 
     private async Task LoadQuestions()
     {
@@ -103,6 +110,7 @@
         else
         {
             isTestCompleted = true;
+            rightandwrong = new double[] { score, 5 - score };
         }
     }
 
