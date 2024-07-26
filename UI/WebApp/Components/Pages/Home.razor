@@ -1,63 +1,5 @@
 ﻿@page "/"
-
-<div class="hero-bg">
-    <header class="container-fluid py-3 px-4">
-        <nav class="navbar navbar-expand-lg mb-0 mb-lg-5">
-            <a href="/" class="navbar-brand">
-                <img src="/assets/img/logo.png" alt="logo" style="height:55px" />
-            </a>
-
-            <button class="navbar-toggler toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav navigation me-auto ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#Home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#About">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Contact">Contact</a>
-                    </li>
-                </ul>
-
-                <div class="nav-btn">
-                    <button type="button" class="get-start btn btn-outline-primary px-4 rounded-pill">
-                        Let's Get started
-                    </button>
-                </div>
-
-            </div>
-        </nav>
-
-        <svg class="bottom-curve" viewBox="0 0 834 99" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M242.5 2.48937C135.3 -9.90908 37.6667 26.7931 0 51.0969V99H834V14.4651C519.5 90.5465 449 26.3726 242.5 2.48937Z" fill="white" />
-        </svg>
-
-
-        <!----------------- hero ---------------->
-        <div class="row gy-5">
-            <div class="col-lg-6 text-white">
-                <h1 class="hero-header mt-5" style="color: darkblue;">Automate your CV creation with JobGenie resume builder.</h1>
-                <p class="hero-subheader mt-3" style="color: darkblue;">For candidates who wants to ace their resume screening interview.</p>
-
-                <div class="hero-cto mt-5">
-                    <button class="btn get-start btn-primary px-4 py-2 rounded-pill">Let's Get started</button>
-                    <!-- <button class="btn trial ms-2 border-0 text-white">Generate Resume</button> -->
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="hero-image">
-                    <img class="feature" src="/assets/img/homeImage.svg" alt="hero feature image">
-                </div>
-            </div>
-        </div>
-    </header>
-</div>
+@layout Layout.HomeLayout
 
 <!-- ---------------------------task------------------------------------ -->
 <section id="About" class="task-section mt-0 mt-md-5 px-4">
@@ -67,7 +9,7 @@
         </div>
         <div class="col col-lg-6">
             <div class="taskSec-content mt-0 mt-md-5">
-                <h1 class="section-heading fs-1 mb-3">Powered by Gemini AI</h1>
+                <h1 class="section-heading fs-1 mb-3">Powered by Generative AI</h1>
                 <p class="section-subhead">We craft your resume with the power of AI. Relevant keywords are used while generating you resume.</p>
                 <button class="btn mt-4 task-section-cto px-4 py-2 rounded-pill">Learn more</button>
             </div>

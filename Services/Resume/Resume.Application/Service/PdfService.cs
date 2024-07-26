@@ -163,7 +163,8 @@ namespace Resume.Application.Service
             height: 100%;  
         }
         body {
-            min-height: 100%;  
+            min-height: 1123px;
+            min-width: 794px;  
             background: #eee;
             font-family: 'Lato', sans-serif;
             font-weight: 400;

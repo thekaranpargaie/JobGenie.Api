@@ -1,4 +1,4 @@
-﻿@page "/createresume"
+﻿@page "/generateresume"
 
 @using MudBlazor
 @using System.Net.Http.Json
@@ -6,7 +6,7 @@
 @inject IJSRuntime JS
 @inject ResumeApiClient ResumeApiClient
 
-<PageTitle>Step-by-Step Form</PageTitle>
+<PageTitle>Generate Resume</PageTitle>
 
 <MudGrid>
     <!-- Stepper Form Section -->
@@ -100,7 +100,7 @@
     private void HandleNameChanged(string newName)
     {
         firstName = newName.Split(' ')[0];
-        lastName = newName.Split(' ')[1];
+        lastName = newName.Split(' ').Length > 1 ? newName.Split(' ')[1] : string.Empty;
     }
 
     private void HandleLastNameChanged(string newLastName)
