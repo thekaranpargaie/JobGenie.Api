@@ -1,6 +1,6 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-string connectionString = "Host=pg-jobgenie-korkaran14-2b27.d.aivencloud.com;Port=23102;Database=defaultdb;Username=avnadmin;Password=AVNS_Kg3Fx9RQ5gzhMKfguq1;SslMode=Require;";
+string connectionString = "Host=glacially-mint-fish.data-1.use1.tembo.io;Port=5432;Database=postgres;Username=postgres;Password=PjvSYBDTU7SVuLEj;";
 
 var userApi = builder.AddProject<Projects.User_Api>("userapi")
     .WithEnvironment("ConnectionStrings__JobGenie", connectionString);
