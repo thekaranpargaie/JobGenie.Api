@@ -1,7 +1,5 @@
-﻿using GenAI;
-using Resume.Domain;
-
-namespace Resume.Application.DTOs
+﻿
+namespace Resume.Tests.Resume.Application.DTOs.DTOsClass
 {
     public class ResumeRequestDto
     {
@@ -10,13 +8,12 @@ namespace Resume.Application.DTOs
         public string? Email { get; set; }
         public string? Phone { get; set; }
         public string? Position { get; set; }
-        public List<ExperienceRequestDto> Experiences { get; set; } = [];
-        public List<EducationRequestDto> Educations { get; set; } = [];
-        public List<ProjectRequestDto> Projects { get; set; } = [];
-        public List<string> Skills { get; set; } = [];
-        public List<string> Interests { get; set; } = [];
+        public List<ExperienceRequestDto> Experiences { get; set; } = new List<ExperienceRequestDto>();
+        public List<EducationRequestDto> Educations { get; set; } = new List<EducationRequestDto>();
+        public List<ProjectRequestDto> Projects { get; set; } = new List<ProjectRequestDto>();
+        public List<string> Skills { get; set; } = new List<string>();
+        public List<string> Interests { get; set; } = new List<string>();
     }
-
     public class ExperienceRequestDto
     {
         public string? CompanyName { get; set; }

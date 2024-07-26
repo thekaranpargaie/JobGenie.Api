@@ -1,14 +1,12 @@
-﻿using GenAI;
-using Resume.Domain;
-
-namespace Resume.Application.DTOs
+﻿namespace Resume.Tests.Resume.Application.DTOs.DTOsClass
 {
     public class ResumeDtoResponse : DynamicResponse
     {
         public ResumeDto? Resume { get; set; }
+
         public override ResumeDtoResponse GetSampleInstance()
         {
-            var sampleResume = new ResumeDto(new Domain.Resume
+            var sampleResume = new ResumeDto(new Resume
             {
                 FirstName = "John",
                 LastName = "Doe",
@@ -91,7 +89,8 @@ namespace Resume.Application.DTOs
             return new ResumeDtoResponse { Resume = sampleResume };
         }
     }
-    public class ResumeDto: DynamicResponse
+
+    public class ResumeDto
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -104,11 +103,9 @@ namespace Resume.Application.DTOs
         public List<ProjectDto> Projects { get; set; } = new List<ProjectDto>();
         public List<SkillDto> Skills { get; set; } = new List<SkillDto>();
         public List<InterestDto> Interests { get; set; } = new List<InterestDto>();
-        public ResumeDto()
-        {
 
-        }
-        public ResumeDto(Domain.Resume resume)
+
+        public ResumeDto(Resume resume)
         {
             FirstName = resume.FirstName;
             LastName = resume.LastName;
@@ -122,6 +119,10 @@ namespace Resume.Application.DTOs
             Skills = resume.Skills.Select(s => new SkillDto(s)).ToList();
             Interests = resume.Interests.Select(i => new InterestDto(i)).ToList();
         }
+
+        //public ResumeDto(Resume resume)
+        //{
+        //}
     }
 
     public class ExperienceDto
@@ -131,10 +132,9 @@ namespace Resume.Application.DTOs
         public string Duration { get; set; }
         public string Position { get; set; }
         public string Description { get; set; }
-        public ExperienceDto()
-        {
 
-        }
+        public ExperienceDto() { }
+
         public ExperienceDto(Experience experience)
         {
             CompanyName = experience.CompanyName;
@@ -152,10 +152,9 @@ namespace Resume.Application.DTOs
         public string Duration { get; set; }
         public string Degree { get; set; }
         public string Description { get; set; }
-        public EducationDto()
-        {
 
-        }
+        public EducationDto() { }
+
         public EducationDto(Education education)
         {
             InstitutionName = education.InstitutionName;
@@ -170,10 +169,9 @@ namespace Resume.Application.DTOs
     {
         public string ProjectName { get; set; }
         public string Description { get; set; }
-        public ProjectDto()
-        {
 
-        }
+        public ProjectDto() { }
+
         public ProjectDto(Project project)
         {
             ProjectName = project.ProjectName;
@@ -186,10 +184,8 @@ namespace Resume.Application.DTOs
         public string SkillName { get; set; }
         public int ProficiencyLevel { get; set; } // Proficiency level from 1 to 5
 
-        public SkillDto()
-        {
+        public SkillDto() { }
 
-        }
         public SkillDto(Skill skill)
         {
             SkillName = skill.SkillName;
@@ -200,14 +196,13 @@ namespace Resume.Application.DTOs
     public class InterestDto
     {
         public string InterestName { get; set; }
-        public InterestDto()
-        {
 
-        }
+        public InterestDto() { }
+
         public InterestDto(Interest interest)
         {
             InterestName = interest.InterestName;
         }
     }
-
 }
+
