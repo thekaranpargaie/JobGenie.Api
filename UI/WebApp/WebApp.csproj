@@ -6,6 +6,33 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\assets\img\article-bg.svg" />
+    <None Include="wwwroot\assets\img\Avatar-1.png" />
+    <None Include="wwwroot\assets\img\Avatar-2.png" />
+    <None Include="wwwroot\assets\img\chat.png" />
+    <None Include="wwwroot\assets\img\customer.png" />
+    <None Include="wwwroot\assets\img\dots.svg" />
+    <None Include="wwwroot\assets\img\Facebook.svg" />
+    <None Include="wwwroot\assets\img\hero-bg.svg" />
+    <None Include="wwwroot\assets\img\homeImage.svg" />
+    <None Include="wwwroot\assets\img\icon.svg" />
+    <None Include="wwwroot\assets\img\instagram.svg" />
+    <None Include="wwwroot\assets\img\linkedin.svg" />
+    <None Include="wwwroot\assets\img\logo-footer.svg" />
+    <None Include="wwwroot\assets\img\pricing-bg-full.svg" />
+    <None Include="wwwroot\assets\img\pricing-bg.svg" />
+    <None Include="wwwroot\assets\img\round.svg" />
+    <None Include="wwwroot\assets\img\slider-1.png" />
+    <None Include="wwwroot\assets\img\slider-2.png" />
+    <None Include="wwwroot\assets\img\slider-3.png" />
+    <None Include="wwwroot\assets\img\task.png" />
+    <None Include="wwwroot\assets\img\testimonial-bg.svg" />
+    <None Include="wwwroot\assets\img\twitter.svg" />
+    <None Include="wwwroot\script.js" />
+    <None Include="wwwroot\style.css" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="MudBlazor" Version="7.*" />
