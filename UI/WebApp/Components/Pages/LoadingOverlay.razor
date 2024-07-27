@@ -1,17 +1,37 @@
 ﻿@using MudBlazor
+@code {
+    private readonly string[] messages = new[]
+    {
+        "Your wish is our command. The genie is working on it...",
+        "Hold on tight! The genie is conjuring up your request...",
+        "Abracadabra! The genie is weaving its magic...",
+        "Magic in progress... The genie is on the job!",
+        "Hocus Pocus! The genie is making it happen..."
+    };
+
+    private string currentMessage;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Random random = new Random();
+        currentMessage = messages[random.Next(messages.Length)];
+    }
+
+    [Parameter] public bool IsVisible { get; set; }
+}
 
 <div class="loading-overlay" style="@(IsVisible ? "display: flex;" : "display: none;")">
     <MudPaper Class="d-flex align-items-center justify-content-center" Style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5);">
-        <div class="text-center">
-            <MudIcon Icon="@Icons.Material.Filled.HourglassEmpty" Style="font-size: 48px; color: white;" />
-            <MudText Color="Color.Secondary">AI is working on your resume...</MudText>
+        <div class="d-flex align-items-center text-center">
+            <img src="/assets/img/genie.gif" alt="Genie" style="height: 75px; margin-right: 16px;" />
+            <div>
+                <p Style="color: white; font-size: 16px;"><b>@currentMessage</b></p>
+            </div>
         </div>
     </MudPaper>
 </div>
 
-@code {
-    [Parameter] public bool IsVisible { get; set; }
-}
 <style>
     .loading-overlay {
         position: fixed;

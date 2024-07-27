@@ -1,0 +1,78 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+<style>
+    .text-box-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .text-box-center label {
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .text-box-center input {
+            border-radius: 24px;
+            border: 1px solid #dfe1e5;
+            background: #fff;
+            padding: 20px;
+            width: 638px;
+            height: 44px;
+            margin: 20px;
+            box-sizing: border-box;
+        }
+
+            .text-box-center input:hover {
+                box-shadow: 0 0 8px 1px #e1e1e1;
+            }
+
+</style>
+<div class="text-box-center">
+    @if (IsLabelEnabled)
+    {
+        <label for="skillInput">@Label</label>
+    }
+    <input 
+        id="skillInput"
+        @bind-value="Value" 
+        placeholder="@Placeholder" 
+        @onkeydown="HandleKeyDown" 
+        @oninput="HandleInput"
+        autofocus 
+        autocomplete="off" 
+    />
+</div>
+
+@code {
+    [Parameter]
+    public string Value { get; set; }
+
+    [Parameter]
+    public EventCallback<string> ValueChanged { get; set; }
+
+    [Parameter]
+    public string Label { get; set; }
+
+    [Parameter]
+    public string Placeholder { get; set; }
+
+    [Parameter]
+    public EventCallback<KeyboardEventArgs> OnKeyDown { get; set; }
+
+    [Parameter]
+    public bool Immediate { get; set; }
+
+    [Parameter]
+    public bool IsLabelEnabled { get; set; }
+
+    private async Task HandleKeyDown(KeyboardEventArgs e)
+    {
+        await OnKeyDown.InvokeAsync(e);
+    }
+
+    private async Task HandleInput(ChangeEventArgs e)
+    {
+        Value = e.Value?.ToString();
+        await ValueChanged.InvokeAsync(Value);
+    }
+}
