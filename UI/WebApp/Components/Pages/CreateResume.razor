@@ -9,43 +9,49 @@
 <PageTitle>Generate Resume</PageTitle>
 
 <MudGrid>
-    <!-- Stepper Form Section -->
-    <MudItem xs="12" sm="6">
-        <MudPaper Class="pa-4" Style="height: 100%;">
-            @if (currentStep == 0)
-            {
-                <Step1 NameChanged="HandleNameChanged" NextStep="NextStep" />
-            }
-            else if (currentStep == 1)
-            {
-                <Step2 EmailChanged="HandleEmailChanged" NextStep="NextStep" PreviousStep="PreviousStep" />
-            }
-            else if (currentStep == 2)
-            {
-                <Step3 SkillsChanged="HandleSkillsChanged" InterestsChanged="HandleInterestsChanged" NextStep="NextStep" PreviousStep="PreviousStep" />
-            }
-            else if (currentStep == 3)
-            {
-                <Step4 ProjectsChanged="HandleProjectsChanged" NextStep="NextStep" PreviousStep="PreviousStep" />
-            }
-            else if (currentStep == 4)
-            {
-                <Step5 EducationsChanged="HandleEducationsChanged" NextStep="NextStep" PreviousStep="PreviousStep" />
-            }
-            else if (currentStep == 5)
-            {
-                <Step6 ExperiencesChanged="HandleExperiencesChanged" Submit="Submit" PreviousStep="PreviousStep" />
-            }
-        </MudPaper>
-    </MudItem>
-
-    <!-- PDF Viewer Section -->
-    <MudItem xs="12" sm="6">
-        <MudPaper Class="pa-4" Style="height: 100%; overflow: hidden;">
-            <ResumeComponent Resume="@resumeDto" />
-            <LoadingOverlay IsVisible="@isSubmitting" />
-        </MudPaper>
-    </MudItem>
+    @if (!isGenerated)
+    {
+        <!-- Stepper Form Section -->
+        <MudItem xs="12" sm="12">
+            <MudPaper Class="pa-4" Style="height: 100%;">
+                <Stepper CurrentStep="@currentStep" StepNames="@stepNames" />
+                @if (currentStep == 0)
+                {
+                    <Step1 NameChanged="HandleNameChanged" NextStep="NextStep" />
+                }
+                else if (currentStep == 1)
+                {
+                    <Step2 EmailChanged="HandleEmailChanged" NextStep="NextStep" PreviousStep="PreviousStep" />
+                }
+                else if (currentStep == 2)
+                {
+                    <Step3 SkillsChanged="HandleSkillsChanged" InterestsChanged="HandleInterestsChanged" NextStep="NextStep" PreviousStep="PreviousStep" />
+                }
+                else if (currentStep == 3)
+                {
+                    <Step4 ProjectsChanged="HandleProjectsChanged" NextStep="NextStep" PreviousStep="PreviousStep" />
+                }
+                else if (currentStep == 4)
+                {
+                    <Step5 EducationsChanged="HandleEducationsChanged" NextStep="NextStep" PreviousStep="PreviousStep" />
+                }
+                else if (currentStep == 5)
+                {
+                    <Step6 ExperiencesChanged="HandleExperiencesChanged" Submit="Submit" PreviousStep="PreviousStep" />
+                }
+            </MudPaper>
+        </MudItem>
+    }
+    else
+    {
+        <!-- PDF Viewer Section -->
+        <MudItem xs="12" sm="12">
+            <MudPaper Class="pa-4" Style="height: 100%; overflow: hidden;">
+                <ResumeComponent Resume="@resumeDto" />
+                <LoadingOverlay IsVisible="@isSubmitting" />
+            </MudPaper>
+        </MudItem>
+    }
 </MudGrid>
 
 @if (!string.IsNullOrEmpty(response))
@@ -74,6 +80,10 @@
     private ResumeDto resumeDto = new();
     private bool isSubmitting = false;
     private bool isGenerated = false;
+    private string[] stepNames = new string[]
+    {
+        "Personal Details", "Contact Information", "Skills", "Projects", "Education", "Experience"
+    };
 
     protected override async Task OnInitializedAsync()
     {
