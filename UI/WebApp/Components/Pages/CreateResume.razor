@@ -60,11 +60,11 @@
 
 @code {
     private int currentStep = 0;
-    private string firstName;
-    private string lastName;
-    private string email;
-    private string phone;
-    private string position = "";
+    private string? FirstName;
+    private string? LastName;
+    private string? Email;
+    private string? Phone;
+    private string? Position = "";
     private List<ExperienceRequestDto> experiences = new();
     private List<EducationRequestDto> educations = new();
     private List<ProjectRequestDto> projects = new();
@@ -99,28 +99,28 @@
 
     private void HandleNameChanged(string newName)
     {
-        firstName = newName.Split(' ')[0];
-        lastName = newName.Split(' ').Length > 1 ? newName.Split(' ')[1] : string.Empty;
+        FirstName = newName.Split(' ')[0];
+        LastName = newName.Split(' ').Length > 1 ? newName.Split(' ')[1] : string.Empty;
     }
 
     private void HandleLastNameChanged(string newLastName)
     {
-        lastName = newLastName;
+        LastName = newLastName;
     }
 
     private void HandlePhoneChanged(string newPhone)
     {
-        phone = newPhone;
+        Phone = newPhone;
     }
 
     private void HandlePositionChanged(string newPosition)
     {
-        position = newPosition;
+        Position = newPosition;
     }
 
     private void HandleEmailChanged(string newEmail)
     {
-        email = newEmail;
+        Email = newEmail;
     }
 
     private void HandleExperiencesChanged(List<ExperienceRequestDto> newExperiences)
@@ -152,11 +152,11 @@
     {
         var resume = new ResumeRequestDto
         {
-            FirstName = firstName,
-            LastName = lastName,
-            Email = email,
-            Phone = phone,
-            Position = position,
+            FirstName = FirstName,
+            LastName = LastName,
+            Email = Email,
+            Phone = Phone,
+            Position = Position,
             Experiences = experiences,
             Educations = educations,
             Projects = projects,

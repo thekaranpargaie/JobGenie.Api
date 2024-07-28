@@ -1,4 +1,4 @@
-﻿<MudTextField Label="Email" @bind-Value="email" />
+﻿<MudTextField Label="Email" @bind-Value="Email" />
 
 <MudButton Variant="Variant.Text" Color="Color.Secondary" OnClick="Previous">Previous</MudButton>
 <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Next">Next</MudButton>
@@ -8,11 +8,11 @@
     [Parameter] public EventCallback NextStep { get; set; }
     [Parameter] public EventCallback PreviousStep { get; set; }
 
-    private string email;
+    private string? Email;
 
     private async Task Next()
     {
-        await EmailChanged.InvokeAsync(email);
+        await EmailChanged.InvokeAsync(Email);
         await NextStep.InvokeAsync();
     }
 
