@@ -7,14 +7,13 @@
 @inject ResumeApiClient ResumeApiClient
 
 <PageTitle>Generate Resume</PageTitle>
-
-<MudGrid>
+    <Stepper CurrentStep="@currentStep" StepNames="@stepNames" />
+    <LoadingOverlay IsVisible="@isSubmitting" />
     @if (!isGenerated)
     {
         <!-- Stepper Form Section -->
         <MudItem xs="12" sm="12">
             <MudPaper Class="pa-4" Style="height: 100%;">
-                <Stepper CurrentStep="@currentStep" StepNames="@stepNames" />
                 @if (currentStep == 0)
                 {
                     <Step1 NameChanged="HandleNameChanged" NextStep="NextStep" />
@@ -48,21 +47,12 @@
         <MudItem xs="12" sm="12">
             <MudPaper Class="pa-4" Style="height: 100%; overflow: hidden;">
                 <ResumeComponent Resume="@resumeDto" />
-                <LoadingOverlay IsVisible="@isSubmitting" />
             </MudPaper>
         </MudItem>
+        <div class="d-flex justify-content-center align-items-center">
+            <MudFab StartIcon="@Icons.Material.Filled.Download" Label="Download" OnClick="DownloadResume" />
+        </div>
     }
-</MudGrid>
-
-@if (!string.IsNullOrEmpty(response))
-{
-    <MudAlert Severity="MudBlazor.Severity.Success">@response</MudAlert>
-}
-
-@if (isGenerated)
-{
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="DownloadResume">Download Resume</MudButton>
-}
 
 @code {
     private int currentStep = 0;
@@ -82,7 +72,7 @@
     private bool isGenerated = false;
     private string[] stepNames = new string[]
     {
-        "Personal Details", "Contact Information", "Skills", "Projects", "Education", "Experience"
+        "Personal Details", "Contact Information", "Skills", "Projects", "Education", "Experience", "Preview & Download"
     };
 
     protected override async Task OnInitializedAsync()
@@ -175,6 +165,7 @@
         };
         isSubmitting = true;
         resumeDto = await ResumeApiClient.GenerateResumeAsync(resume);
+        currentStep = 6;
         isSubmitting = false;
         isGenerated = true;
     }

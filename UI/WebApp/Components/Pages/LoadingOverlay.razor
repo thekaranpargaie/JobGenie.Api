@@ -22,14 +22,10 @@
 }
 
 <div class="loading-overlay" style="@(IsVisible ? "display: flex;" : "display: none;")">
-    <MudPaper Class="d-flex align-items-center justify-content-center" Style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5);">
-        <div class="d-flex align-items-center text-center">
-            <img src="/assets/img/genie.gif" alt="Genie" style="height: 75px; margin-right: 16px;" />
-            <div>
-                <p Style="color: white; font-size: 16px;"><b>@currentMessage</b></p>
-            </div>
-        </div>
-    </MudPaper>
+    <div class="loading-content">
+        <img src="/assets/img/genie-loading.gif" alt="Genie" class="genie-image" />
+        <p class="loading-text"><b>@currentMessage</b></p>
+    </div>
 </div>
 
 <style>
@@ -43,5 +39,23 @@
         align-items: center;
         justify-content: center;
         z-index: 1000;
+        background-color: rgba(255, 255, 255, 1); /* Solid white background */
+    }
+
+    .loading-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .genie-image {
+        height: 75px;
+        margin-bottom: 16px;
+    }
+
+    .loading-text {
+        color: #501cab; /* Purple text color */
+        font-size: 16px;
     }
 </style>

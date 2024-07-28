@@ -4,16 +4,15 @@
         <h4>Education</h4>
         @foreach (var education in educations.Select((value, index) => new { value, index }))
         {
-            <MudTextField @bind-Value="educations[education.index].InstitutionName" Label="Institution Name" Margin="Margin.Dense" />
-            <MudTextField @bind-Value="educations[education.index].Address" Label="Address" Margin="Margin.Dense" />
-            <MudTextField @bind-Value="educations[education.index].Duration" Label="Duration" Margin="Margin.Dense" />
-            <MudTextField @bind-Value="educations[education.index].Degree" Label="Degree" Margin="Margin.Dense" />
+            <TextBoxCenter @bind-Value="educations[education.index].InstitutionName" Label="" Placeholder="Institution Name" />
+            <TextBoxCenter @bind-Value="educations[education.index].Address" Label="" Placeholder="Address" />
+            <TextBoxCenter @bind-Value="educations[education.index].Duration" Label="" Placeholder="Duration" />
+            <TextBoxCenter @bind-Value="educations[education.index].Degree" Label="" Placeholder="Degree" />
         }
         <MudButton Variant="Variant.Text" Color="Color.Primary" OnClick="AddEducation">Add Education</MudButton>
     </div>
 
-    <MudButton Variant="Variant.Text" Color="Color.Secondary" OnClick="Previous">Previous</MudButton>
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Next">Next</MudButton>
+    <StepperNavigation Previous="Previous" Next="Next" DisablePrevious="false" />
 </MudPaper>
 
 @code {

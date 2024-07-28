@@ -2,23 +2,11 @@
 
 <MudPaper Class="pa-4" Style="height: 100%;">
     <div>
-        <h4>Skills</h4>
-        @foreach (var skill in skills.Select((value, index) => new { value, index }))
-        {
-            <MudTextField @bind-Value="skills[skill.index]" Label="Skill" Margin="Margin.Dense" />
-        }
-        <MudButton Variant="Variant.Text" Color="Color.Primary" OnClick="AddSkill">Add Skill</MudButton>
-
-        <h4>Interests</h4>
-        @foreach (var interest in interests.Select((value, index) => new { value, index }))
-        {
-            <MudTextField @bind-Value="interests[interest.index]" Label="Interest" Margin="Margin.Dense" />
-        }
-        <MudButton Variant="Variant.Text" Color="Color.Primary" OnClick="AddInterest">Add Interest</MudButton>
+        <TextBoxCenter Label="" Placeholder="Enter comma separated skills" ValueChanged="AddSkill" />
+        <TextBoxCenter Label="" Placeholder="Enter comma separated interests" ValueChanged="AddInterest" />
     </div>
 
-    <MudButton Variant="Variant.Text" Color="Color.Secondary" OnClick="Previous">Previous</MudButton>
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Next">Next</MudButton>
+    <StepperNavigation Previous="Previous" Next="Next" DisablePrevious="false" />
 </MudPaper>
 
 @code {
@@ -26,23 +14,22 @@
     [Parameter] public EventCallback<List<string>> InterestsChanged { get; set; }
     [Parameter] public EventCallback NextStep { get; set; }
     [Parameter] public EventCallback PreviousStep { get; set; }
-
     private List<string> skills = new() { string.Empty }; // Start with one empty skill input
     private List<string> interests = new() { string.Empty }; // Start with one empty interest input
 
-    private void AddSkill()
+    private void AddSkill(string skill)
     {
-        if (!string.IsNullOrWhiteSpace(skills.LastOrDefault()))
+        if (!string.IsNullOrEmpty(skill))
         {
-            skills.Add(string.Empty); // Add a new empty skill input only if the last one is not empty
+            skills = skill.Split(",").Select(x => x.Trim()).ToList();
         }
     }
 
-    private void AddInterest()
+    private void AddInterest(string interest)
     {
-        if (!string.IsNullOrWhiteSpace(interests.LastOrDefault()))
+        if (!string.IsNullOrEmpty(interest))
         {
-            interests.Add(string.Empty); // Add a new empty interest input only if the last one is not empty
+            interests = interest.Split(",").Select(x => x.Trim()).ToList();
         }
     }
 

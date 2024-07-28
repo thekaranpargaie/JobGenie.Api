@@ -4,14 +4,13 @@
         <h4>Projects</h4>
         @foreach (var project in projects.Select((value, index) => new { value, index }))
         {
-            <MudTextField @bind-Value="projects[project.index].ProjectName" Label="Project Name" Margin="Margin.Dense" />
-            <MudTextField @bind-Value="projects[project.index].Description" Label="Description" Margin="Margin.Dense" />
+            <TextBoxCenter @bind-Value="projects[project.index].ProjectName" Label="" Placeholder="Project name" />
+            <TextBoxCenter @bind-Value="projects[project.index].Description" Label="" Placeholder="Project name" />
         }
         <MudButton Variant="Variant.Text" Color="Color.Primary" OnClick="AddProject">Add Project</MudButton>
     </div>
 
-    <MudButton Variant="Variant.Text" Color="Color.Secondary" OnClick="Previous">Previous</MudButton>
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Next">Next</MudButton>
+    <StepperNavigation Previous="Previous" Next="Next" DisablePrevious="false" />
 </MudPaper>
 
 @code {

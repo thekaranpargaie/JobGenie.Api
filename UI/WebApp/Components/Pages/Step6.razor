@@ -4,16 +4,14 @@
         <h4>Experience</h4>
         @foreach (var experience in experiences.Select((value, index) => new { value, index }))
         {
-            <MudTextField @bind-Value="experiences[experience.index].CompanyName" Label="Company Name" Margin="Margin.Dense" />
-            <MudTextField @bind-Value="experiences[experience.index].Address" Label="Address" Margin="Margin.Dense" />
-            <MudTextField @bind-Value="experiences[experience.index].Duration" Label="Duration" Margin="Margin.Dense" />
-            <MudTextField @bind-Value="experiences[experience.index].Position" Label="Position" Margin="Margin.Dense" />
+            <TextBoxCenter @bind-Value="experiences[experience.index].CompanyName" Label="" Placeholder="Company Name" />
+            <TextBoxCenter @bind-Value="experiences[experience.index].Address" Label="" Placeholder="Address" />
+            <TextBoxCenter @bind-Value="experiences[experience.index].Duration" Label="" Placeholder="Duration" />
+            <TextBoxCenter @bind-Value="experiences[experience.index].Position" Label="" Placeholder="Position" />
         }
         <MudButton Variant="Variant.Text" Color="Color.Primary" OnClick="AddExperience">Add Experience</MudButton>
     </div>
-
-    <MudButton Variant="Variant.Text" Color="Color.Secondary" OnClick="Previous">Previous</MudButton>
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SubmitForm">Submit</MudButton>
+    <StepperNavigation Previous="Previous" Submit="SubmitForm" DisablePrevious="false" />
 </MudPaper>
 
 @code {

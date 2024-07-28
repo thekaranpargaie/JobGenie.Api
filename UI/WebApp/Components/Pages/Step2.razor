@@ -1,7 +1,5 @@
-﻿<MudTextField Label="Email" @bind-Value="Email" />
-
-<MudButton Variant="Variant.Text" Color="Color.Secondary" OnClick="Previous">Previous</MudButton>
-<MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Next">Next</MudButton>
+﻿<TextBoxCenter @bind-Value="Email" Label="" Placeholder="Enter your email" />
+<StepperNavigation Previous="Previous" Next="Next" DisablePrevious="false" />
 
 @code {
     [Parameter] public EventCallback<string> EmailChanged { get; set; }

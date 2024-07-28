@@ -70,24 +70,6 @@
                 </div>
             </div>
         </div>
-            @*<MudText Typo="Typo.h5" Class="mb-2">@questions[currentQuestionIndex].Question</MudText>
-            <MudText Typo="Typo.body2" Class="mb-2">Question @(@currentQuestionIndex + 1) of @questions.Count</MudText>
-
-            <MudList T="AnswerOptions">
-                @foreach (var option in questions[currentQuestionIndex].Options)
-                {
-                    <MudListItem T="AnswerOptions" Class="@GetOptionClass(option.OptionNumber)" Disabled="@isAnswered" OnClick="@(() => SelectOption(option.OptionNumber))">
-                        @option.Option
-                    </MudListItem>
-                }
-            </MudList>
-
-            @if (isAnswered)
-            {
-                <MudText Typo="Typo.body1" Class="mt-2">@questions[currentQuestionIndex].CorrectAnswerExplanation</MudText>
-            }
-
-            <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mt-4" Disabled="!isAnswered" OnClick="NextQuestion">Next</MudButton> *@
         }
     }
     else
