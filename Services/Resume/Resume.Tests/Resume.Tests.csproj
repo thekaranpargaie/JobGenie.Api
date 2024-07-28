@@ -36,9 +36,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Base\GenAI\GenAI.csproj" />
-    <ProjectReference Include="..\Services\Resume\Resume.Application\Resume.Application.csproj" />
-    <ProjectReference Include="..\Services\Resume\Resume.Domain\Resume.Domain.csproj" />
+    <ProjectReference Include="..\..\..\Base\GenAI\GenAI.csproj" />
+    <ProjectReference Include="..\Resume.Application\Resume.Application.csproj" />
+    <ProjectReference Include="..\Resume.Domain\Resume.Domain.csproj" />
   </ItemGroup>
 
 </Project>
