@@ -7,7 +7,7 @@
             <TextBoxCenter @bind-Value="projects[project.index].ProjectName" Label="" Placeholder="Project name" />
             <TextBoxCenter @bind-Value="projects[project.index].Description" Label="" Placeholder="Project description" />
         }
-        <a @OnClick="AddProject">Add Project</a>
+        <MudButton Style="border: 1px solid #501cab; color: #501cab; border-radius: 0.25rem;" Variant="Variant.Text" Color="Color.Primary" OnClick="AddProject">Add Project</MudButton>
     </div>
 
     <StepperNavigation Previous="Previous" Next="Next" DisablePrevious="false" />
